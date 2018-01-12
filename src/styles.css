@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+
+.header-separator {
+  height: 4px;
+  width: 75px;
+  background-color: #ffc300;
+  margin: 8px auto;
+}
+
+.section-margin {
+  margin-top: 24px;
+}
+
+textarea {
+  resize: vertical;
+}
