@@ -1,3 +1,12 @@
-<p>
-  live-view works!
-</p>
+<ul class="printers">
+  <span class="badge">Printer Id</span>
+  <span class="simple"> Name</span>
+  <span class="badge">Available</span>
+  <span class="simple"> Reserved</span>
+  <li *ngFor="let printer of printers" [class.selected]="printer === selectedPrinter" (click)="onSelect(printer)">
+    <span class="badge">{{printer.id}}</span>
+    <span class="simple"> {{printer.name}}</span>
+    <span class="badge">{{printer.available}}</span>
+    <span class="simple"> {{printer.reserved}}</span>
+  </li>
+</ul>

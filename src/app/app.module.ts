@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
+import { HttpModule } from "@angular/http";
 
 import { AppRoutes } from "./routes";
 
@@ -8,6 +9,8 @@ import { AppComponent } from './app/app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LiveViewComponent } from './live-view/live-view.component';
+
+import { PrinterService } from './services/printer.service'
 
 @NgModule({
   declarations: [
@@ -18,9 +21,10 @@ import { LiveViewComponent } from './live-view/live-view.component';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(AppRoutes)
+    RouterModule.forRoot(AppRoutes),
+    HttpModule,
   ],
-  providers: [],
+  providers: [PrinterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
