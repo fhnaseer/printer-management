@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from "rxjs/Rx";
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { Printer } from './../models';
+import { Printer, MockedPrinters } from './../models';
 import { PrinterService } from '../services/printer.service';
 
 @Component({
@@ -31,14 +31,14 @@ export class LiveViewComponent implements OnInit {
   }
 
   getPrinterInformation(tick) {
-    console.log('getting data');
-    if (this.printerService != null) {
-      this.printerService
-        .getMetadata(this.ip)
-        .then(response => {
-          this.printers = response;
-        })
-        .catch(reason => console.log(reason));
-    }
+    this.printers = MockedPrinters;
+    // if (this.printerService != null) {
+    //   this.printerService
+    //     .getMetadata(this.ip)
+    //     .then(response => {
+    //       this.printers = response;
+    //     })
+    //     .catch(reason => console.log(reason));
+    // }
   }
 }

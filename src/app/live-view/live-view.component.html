@@ -1,6 +1,3 @@
-<!-- <h3 *ngIf="!printers" class="container alert alert-warning box-msg" role="alert">
-  Loading
-</h3> -->
 <div *ngIf="printers" class="container">
   <h2>Makerspace</h2>
   <div>
@@ -18,22 +15,78 @@
     <div class="tab-content border">
       <!-- Images tab -->
       <section id="section-1" class="tab-pane fade" [class.in]="activeTab == 1" [class.active]="activeTab == 1">
-        <li *ngFor="let printer of printers" [class.selected]="printer === selectedPrinter" (click)="onSelect(printer)">
-          <span class="badge">{{printer.id}}</span>
-          <span class="simple"> {{printer.name}}</span>
-          <span class="badge">{{printer.available}}</span>
-          <span class="simple"> {{printer.reserved}}</span>
-        </li>
+        <div class="row" class="test">
+          <div>
+            <table width=100%>
+              <tr>
+                <td>
+                  <label>Printer Id</label>
+                </td>
+                <td>
+                  <label>Name</label>
+                </td>
+                <td>
+                  <label>In Use</label>
+                </td>
+                <td>
+                  <label>Reserved</label>
+                </td>
+              </tr>
+              <tr>
+                <td>{{printers[0].id}}</td>
+                <td> {{printers[0].name}}</td>
+                <td> {{printers[0].available}}</td>
+                <td>
+                  <input type="checkbox" [checked]="printers[0].reserved">
+                </td>
+              </tr>
+              <tr>
+                <td>{{printers[1].id}}</td>
+                <td> {{printers[1].name}}</td>
+                <td> {{printers[1].available}}</td>
+                <td>
+                  <input type="checkbox" [checked]="printers[1].reserved">
+                </td>
+              </tr>
+              <tr>
+                <td>{{printers[2].id}}</td>
+                <td> {{printers[2].name}}</td>
+                <td>{{printers[2].available}}</td>
+                <td>
+                  <input type="checkbox" [checked]="printers[2].reserved">
+                </td>
+              </tr>
+              <tr>
+                <td>{{printers[3].id}}</td>
+                <td> {{printers[3].name}}</td>
+                <td>{{printers[3].available}}</td>
+                <td>
+                  <input type="checkbox" [checked]="printers[3].reserved">
+                </td>
+              </tr>
+              <tr>
+                <td>{{printers[4].id}}</td>
+                <td> {{printers[4].name}}</td>
+                <td>{{printers[4].available}}</td>
+                <td>
+                  <input type="checkbox" [checked]="printers[4].reserved">
+                </td>
+              </tr>
+              <li *ngFor="let printer of printers">
+              </li>
+            </table>
+          </div>
+        </div>
       </section>
       <!-- End: Images tab -->
 
       <!-- Labels tab -->
-      <section id="section-2" class="tab-pane fade" [class.in]="activeTab == 2" [class.active]="activeTab == 2">
-        <li *ngFor="let printer of printers" [class.selected]="printer === selectedPrinter" (click)="onSelect(printer)">
-          <span class="badge">{{printer.id}}</span>
-          <span class="simple"> {{printer.name}}</span>
-          <span class="badge">{{printer.available}}</span>
-          <span class="simple"> {{printer.reserved}}</span>
+      <section id="section-2" class="tab-pane fade " [class.in]="activeTab==2 " [class.active]="activeTab==2 ">
+        <li *ngFor="let printer of printers " [class.selected]="printer === selectedPrinter " (click)="onSelect(printer) ">
+          <span class="badge ">{{printer.id}}</span>
+          <span class="simple "> {{printer.name}}</span>
+          <span class="badge ">{{printer.available}}</span>
+          <span class="simple "> {{printer.reserved}}</span>
         </li>
       </section>
       <!-- End: Labels tab -->
@@ -41,15 +94,15 @@
   </form>
 </div>
 
-<!-- <ul class="printers">
-  <span class="badge">Printer Id</span>
-  <span class="simple"> Name</span>
-  <span class="badge">Available</span>
-  <span class="simple"> Reserved</span>
-  <li *ngFor="let printer of printers" [class.selected]="printer === selectedPrinter" (click)="onSelect(printer)">
-    <span class="badge">{{printer.id}}</span>
-    <span class="simple"> {{printer.name}}</span>
-    <span class="badge">{{printer.available}}</span>
-    <span class="simple"> {{printer.reserved}}</span>
+<!-- <ul class="printers ">
+  <span class="badge ">Printer Id</span>
+  <span class="simple "> Name</span>
+  <span class="badge ">Available</span>
+  <span class="simple "> Reserved</span>
+  <li *ngFor="let printer of printers " [class.selected]="printer===s electedPrinter " (click)="onSelect(printer) ">
+    <span class="badge ">{{printer.id}}</span>
+    <span class="simple "> {{printer.name}}</span>
+    <span class="badge ">{{printer.available}}</span>
+    <span class="simple "> {{printer.reserved}}</span>
   </li>
 </ul> -->
