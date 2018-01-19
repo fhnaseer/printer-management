@@ -60,4 +60,16 @@ export class PrinterService extends BaseService {
         return MockedPrinters[printer];
       })
   }
+
+  getPrinterUsageCount(ip: string, printer: number): Promise<number> {
+    return this.http
+      .get(this.getSensorIp(ip, printer))
+      .toPromise()
+      .then(res => {
+        return res.json().length;
+      })
+      .catch(error => {
+        return 0;
+      })
+  }
 }

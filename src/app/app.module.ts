@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
 import { HttpModule } from "@angular/http";
+import { ChartsModule } from 'ng2-charts';
 
 import { AppRoutes } from "./routes";
 
@@ -23,6 +24,7 @@ import { PrinterService } from './services/printer.service'
     BrowserModule,
     RouterModule.forRoot(AppRoutes),
     HttpModule,
+    ChartsModule
   ],
   providers: [PrinterService],
   bootstrap: [AppComponent]

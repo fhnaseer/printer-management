@@ -23,7 +23,7 @@ export class LiveViewComponent implements OnInit {
 
   ngOnInit() {
     this.printers = MockedPrinters;
-    this.getPrinterInformation(0);
+    this.populateGraphData();
     this.activatedRoute.params.subscribe((params: Params) => {
       this.ip = params["id"];
       let timer = Observable.timer(0, 10000);
@@ -40,7 +40,6 @@ export class LiveViewComponent implements OnInit {
       this.printerService
         .getPrinterStatus(this.ip, id)
         .then(response => {
-          console.log(id);
           this.printers[id] = response;
           this.currentId++;
           if (this.currentId == 5)
@@ -50,4 +49,23 @@ export class LiveViewComponent implements OnInit {
         .catch(reason => console.log(reason));
     }
   }
+
+  populateGraphData() {
+    for (var i = 0; i < this.printers.length; i++)
+      this.getPrinterHistoryData(i);
+  }
+
+  getPrinterHistoryData(id: number) {
+    for (var i = 0; i < this.printers.length; i++)
+      this.labels[i] = this.printers[i].name;
+    this.printerService.getPrinterUsageCount(this.ip, id)
+      .then(response => {
+        this.labelCount[id] = response;
+      })
+      .catch(reason => console.log(reason));
+  }
+
+  public labels: string[] = Array(0);
+  public labelCount: number[] = Array(0);
+  public chartType: string = 'doughnut';
 }

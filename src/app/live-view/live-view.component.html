@@ -82,12 +82,9 @@
 
       <!-- Labels tab -->
       <section id="section-2" class="tab-pane fade " [class.in]="activeTab==2 " [class.active]="activeTab==2 ">
-        <li *ngFor="let printer of printers " [class.selected]="printer === selectedPrinter " (click)="onSelect(printer) ">
-          <span class="badge ">{{printer.id}}</span>
-          <span class="simple "> {{printer.name}}</span>
-          <span class="badge ">{{printer.available}}</span>
-          <span class="simple "> {{printer.reserved}}</span>
-        </li>
+        <div style="display: block; width: 500px; height: 500px; margin: 0 auto">
+          <canvas baseChart [data]="labelCount" [labels]="labels" [chartType]="chartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+        </div>
       </section>
       <!-- End: Labels tab -->
     </div>
