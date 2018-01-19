@@ -1,4 +1,47 @@
-<ul class="printers">
+<!-- <h3 *ngIf="!printers" class="container alert alert-warning box-msg" role="alert">
+  Loading
+</h3> -->
+<div *ngIf="printers" class="container">
+  <h2>Makerspace</h2>
+  <div>
+    Tech Challenge
+  </div>
+  <form class="section-margin">
+    <ul class="nav nav-tabs nav-justified">
+      <li role="presentation" [class.active]="activeTab == 1">
+        <a data-toggle="tab" href="#section-1">Live</a>
+      </li>
+      <li role="presentation" [class.active]="activeTab == 2">
+        <a data-toggle="tab" href="#section-2">History</a>
+      </li>
+    </ul>
+    <div class="tab-content border">
+      <!-- Images tab -->
+      <section id="section-1" class="tab-pane fade" [class.in]="activeTab == 1" [class.active]="activeTab == 1">
+        <li *ngFor="let printer of printers" [class.selected]="printer === selectedPrinter" (click)="onSelect(printer)">
+          <span class="badge">{{printer.id}}</span>
+          <span class="simple"> {{printer.name}}</span>
+          <span class="badge">{{printer.available}}</span>
+          <span class="simple"> {{printer.reserved}}</span>
+        </li>
+      </section>
+      <!-- End: Images tab -->
+
+      <!-- Labels tab -->
+      <section id="section-2" class="tab-pane fade" [class.in]="activeTab == 2" [class.active]="activeTab == 2">
+        <li *ngFor="let printer of printers" [class.selected]="printer === selectedPrinter" (click)="onSelect(printer)">
+          <span class="badge">{{printer.id}}</span>
+          <span class="simple"> {{printer.name}}</span>
+          <span class="badge">{{printer.available}}</span>
+          <span class="simple"> {{printer.reserved}}</span>
+        </li>
+      </section>
+      <!-- End: Labels tab -->
+    </div>
+  </form>
+</div>
+
+<!-- <ul class="printers">
   <span class="badge">Printer Id</span>
   <span class="simple"> Name</span>
   <span class="badge">Available</span>
@@ -9,4 +52,4 @@
     <span class="badge">{{printer.available}}</span>
     <span class="simple"> {{printer.reserved}}</span>
   </li>
-</ul>
+</ul> -->
