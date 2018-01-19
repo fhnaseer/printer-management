@@ -5,5 +5,9 @@
 
 export const environment = {
   production: false,
-  httpUrl: 'http://localhost:9000/'
+  httpUrl: 'http://localhost:3000/',
+  printerOne: '123e4567-e89b-12d3-a456-426655441111',
+  printerTwo: '123e4567-e89b-12d3-a456-426655442222',
+  printerThree: '123e4567-e89b-12d3-a456-426655440000',
+  sensorId: '0',
 };

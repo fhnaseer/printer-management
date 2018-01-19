@@ -5,6 +5,17 @@ export class Printer {
     reserved: boolean;
 }
 
+export class SensorData {
+    timestamp: number;
+    values: Values[];
+}
+
+export class Values {
+    value: number;
+    unit: string;
+    name: string;
+}
+
 export const MockedPrinters: Printer[] = [
     { id: 1, name: 'Green', available: 'Yes', reserved: false },
     { id: 2, name: 'Blue', available: 'Yes', reserved: false },

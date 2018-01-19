@@ -16,29 +16,38 @@ export class LiveViewComponent implements OnInit {
   selectedPrinter: Printer;
 
   ip: string;
+  getNextStatus: boolean = true;
+  currentId: number = 0;
 
   constructor(private printerService: PrinterService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getPrinterInformation(null);
-    // this.activatedRoute.params.subscribe((params: Params) => {
-    //   this.ip = params["id"];
-    //   let timer = Observable.timer(0, 100);
-    //   timer.subscribe(t => {
-    //     this.getPrinterInformation(t);
-    //   });
-    // });
+    this.printers = MockedPrinters;
+    this.getPrinterInformation(0);
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.ip = params["id"];
+      let timer = Observable.timer(0, 10000);
+      timer.subscribe(t => {
+        this.getPrinterInformation(this.currentId);
+      });
+    });
   }
 
-  getPrinterInformation(tick) {
-    this.printers = MockedPrinters;
-    // if (this.printerService != null) {
-    //   this.printerService
-    //     .getMetadata(this.ip)
-    //     .then(response => {
-    //       this.printers = response;
-    //     })
-    //     .catch(reason => console.log(reason));
-    // }
+  getPrinterInformation(id: number) {
+    if (this.getNextStatus == false) return;
+    this.getNextStatus = false;
+    if (this.printerService != null) {
+      this.printerService
+        .getPrinterStatus(this.ip, id)
+        .then(response => {
+          console.log(id);
+          this.printers[id] = response;
+          this.currentId++;
+          if (this.currentId == 5)
+            this.currentId = 0;
+          this.getNextStatus = true;
+        })
+        .catch(reason => console.log(reason));
+    }
   }
 }
