@@ -35,28 +35,28 @@ export class LiveViewComponent implements OnInit {
         });
       });
     }
-    // else {
-    //   let timer = Observable.timer(0, 5000);
-    //   timer.subscribe(t => {
-    //     this.populateMockedData();
-    //   });
-    // }
+    else {
+      let timer = Observable.timer(0, 5000);
+      timer.subscribe(t => {
+        this.populateMockedData();
+      });
+    }
   }
 
   mockedData: number = 1;
   populateMockedData() {
+    if (this.mockedData == 1)
+      this.printers = MockedPrinters;
+    if (this.mockedData == 2)
+      this.printers = MockedPrinters2;
+    if (this.mockedData == 3)
+      this.printers = MockedPrinters3;
+    if (this.mockedData == 4)
+      this.printers = MockedPrinters4;
+    this.mockedData++;
+    if (this.mockedData == 5)
+      this.mockedData = 1;
     this.sortPrinters();
-    // if (this.mockedData == 1)
-    //   this.printers = MockedPrinters;
-    // if (this.mockedData == 2)
-    //   this.printers = MockedPrinters2;
-    // if (this.mockedData == 3)
-    //   this.printers = MockedPrinters3;
-    // if (this.mockedData == 4)
-    //   this.printers = MockedPrinters4;
-    // this.mockedData++;
-    // if (this.mockedData == 5)
-    //   this.mockedData = 1;
   }
 
   setReserveStatus(id: number) {
@@ -64,11 +64,8 @@ export class LiveViewComponent implements OnInit {
   }
 
   sortPrinters() {
-    // var sorted = this.printers.sort((a, b) => (a.reserved === b.reserved) ? 0 : a.reserved ? -1 : 1);
-    this.printers = this.printers.sort((a, b) => a.available.localeCompare(b.available));
-    // this.printers = null;
-    // this.printers = sorted;
-    console.log(this.printers);
+    this.printers = this.printers.sort((a, b) => (a.reserved === b.reserved) ? 0 : a.reserved ? -1 : 1);
+    this.printers = this.printers.sort((a, b) => a.available.localeCompare(b.available)).reverse();
   }
 
   getPrinterInformation(id: number) {

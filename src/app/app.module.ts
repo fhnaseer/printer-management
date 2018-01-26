@@ -5,7 +5,6 @@ import { HttpModule } from "@angular/http";
 import { ChartsModule } from 'ng2-charts';
 import { FormsModule } from '@angular/forms';
 
-
 import { AppRoutes } from "./routes";
 
 import { AppComponent } from './app/app.component';
