@@ -26,7 +26,7 @@
                   <label>Name</label>
                 </td>
                 <td>
-                  <label>In Use</label>
+                  <label>Available</label>
                 </td>
                 <td>
                   <label>Reserved</label>
@@ -37,7 +37,7 @@
                 <td> {{printers[0].name}}</td>
                 <td> {{printers[0].available}}</td>
                 <td>
-                  <input type="checkbox" [checked]="printers[0].reserved">
+                  <input type="checkbox" [(ngModel)]="printers[0].reserved" name="printer1" (change)="setReserveStatus(0)">
                 </td>
               </tr>
               <tr>
@@ -45,7 +45,7 @@
                 <td> {{printers[1].name}}</td>
                 <td> {{printers[1].available}}</td>
                 <td>
-                  <input type="checkbox" [checked]="printers[1].reserved">
+                  <input type="checkbox" [(ngModel)]="printers[1].reserved" name="printer2" (change)="setReserveStatus(1)">
                 </td>
               </tr>
               <tr>
@@ -53,7 +53,7 @@
                 <td> {{printers[2].name}}</td>
                 <td>{{printers[2].available}}</td>
                 <td>
-                  <input type="checkbox" [checked]="printers[2].reserved">
+                  <input type="checkbox" [(ngModel)]="printers[2].reserved" name="printer3" (change)="setReserveStatus(2)">
                 </td>
               </tr>
               <tr>
@@ -61,7 +61,7 @@
                 <td> {{printers[3].name}}</td>
                 <td>{{printers[3].available}}</td>
                 <td>
-                  <input type="checkbox" [checked]="printers[3].reserved">
+                  <input type="checkbox" [(ngModel)]="printers[3].reserved" name="printer4" (change)="setReserveStatus(3)">
                 </td>
               </tr>
               <tr>
@@ -69,7 +69,7 @@
                 <td> {{printers[4].name}}</td>
                 <td>{{printers[4].available}}</td>
                 <td>
-                  <input type="checkbox" [checked]="printers[4].reserved">
+                  <input type="checkbox" [(ngModel)]="printers[4].reserved" name="printer5" (change)="setReserveStatus(4)">
                 </td>
               </tr>
               <li *ngFor="let printer of printers">
