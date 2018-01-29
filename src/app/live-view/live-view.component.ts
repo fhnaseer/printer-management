@@ -19,12 +19,13 @@ export class LiveViewComponent implements OnInit {
   getNextStatus: boolean = true;
   currentId: number = 0;
 
-  demoMode: boolean = true;
+  demoMode: boolean = false;
 
   constructor(private printerService: PrinterService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.printers = MockedPrinters;
+    this.sortPrinters();
     this.populateGraphData();
     if (!this.demoMode) {
       this.activatedRoute.params.subscribe((params: Params) => {
@@ -35,15 +36,9 @@ export class LiveViewComponent implements OnInit {
         });
       });
     }
-    else {
-      let timer = Observable.timer(0, 5000);
-      timer.subscribe(t => {
-        this.populateMockedData();
-      });
-    }
   }
 
-  mockedData: number = 1;
+  mockedData: number = 2;
   populateMockedData() {
     if (this.mockedData == 1)
       this.printers = MockedPrinters;
@@ -75,9 +70,12 @@ export class LiveViewComponent implements OnInit {
       this.printerService
         .getPrinterStatus(this.ip, id)
         .then(response => {
+          console.log(response);
+          console.log(this.printers[id]);
           this.printers[id] = response;
+          this.sortPrinters();
           this.currentId++;
-          if (this.currentId == 5)
+          if (this.currentId == 2)
             this.currentId = 0;
           this.getNextStatus = true;
         })
@@ -91,7 +89,7 @@ export class LiveViewComponent implements OnInit {
   }
 
   getPrinterHistoryData(id: number) {
-    for (var i = 0; i < this.printers.length; i++)
+    for (var i = 0; i < 2; i++)
       this.labels[i] = this.printers[i].name;
     if (!this.demoMode) {
       this.printerService.getPrinterUsageCount(this.ip, id)
@@ -99,6 +97,19 @@ export class LiveViewComponent implements OnInit {
           this.labelCount[id] = response;
         })
         .catch(reason => console.log(reason));
+    }
+  }
+
+  reserve(id: number): void {
+    console.log(id);
+    this.printers[id].reserved = !this.printers[id].reserved;
+    this.sortPrinters();
+
+    if (this.demoMode) {
+      let timer = Observable.timer(10000, 10000);
+      timer.subscribe(t => {
+        this.populateMockedData();
+      });
     }
   }
 

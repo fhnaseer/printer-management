@@ -72,6 +72,23 @@
                   <input type="checkbox" [(ngModel)]="printers[4].reserved" name="printer5" (change)="setReserveStatus(4)">
                 </td>
               </tr>
+              <tr>
+                <td>
+                  <button type="submit" class="btn btn-success" (click)="reserve(0)">Reserve 1</button>
+                </td>
+                <td>
+                  <button type="submit" class="btn btn-success" (click)="reserve(1)">Reserve 2</button>
+                </td>
+                <td>
+                  <button type="submit" class="btn btn-success" (click)="reserve(2)">Reserve 3</button>
+                </td>
+                <td>
+                  <button type="submit" class="btn btn-success" (click)="reserve(3)">Reserve 4</button>
+                </td>
+                <td>
+                  <button type="submit" class="btn btn-success" (click)="reserve(4)">Reserve 5</button>
+                </td>
+              </tr>
               <li *ngFor="let printer of printers">
               </li>
             </table>
