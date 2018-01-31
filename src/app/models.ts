@@ -17,33 +17,33 @@ export class Values {
 }
 
 export const MockedPrinters: Printer[] = [
-    { id: 1, name: 'Green', available: 'No', reserved: true },
-    { id: 2, name: 'Blue', available: 'No', reserved: true },
-    { id: 3, name: 'Yellow', available: 'Yes', reserved: false },
-    { id: 5, name: 'Black', available: 'Yes', reserved: false },
-    { id: 4, name: 'Red', available: 'No', reserved: true },
+    { id: 1, name: 'Pro01', available: 'No', reserved: true },
+    { id: 2, name: 'Pro02', available: 'No', reserved: true },
+    { id: 3, name: 'Pro03', available: 'Yes', reserved: false },
+    { id: 5, name: 'Pro04', available: 'Yes', reserved: false },
+    { id: 4, name: 'Pro05', available: 'No', reserved: true },
 ];
 
 export const MockedPrinters2: Printer[] = [
-    { id: 5, name: 'Black', available: 'Yes', reserved: false },
-    { id: 3, name: 'Yellow', available: 'Yes', reserved: true },
-    { id: 4, name: 'Red', available: 'No', reserved: true },
-    { id: 1, name: 'Green', available: 'No', reserved: true },
-    { id: 2, name: 'Blue', available: 'No', reserved: true },
+    { id: 5, name: 'Pro05', available: 'Yes', reserved: false },
+    { id: 3, name: 'Pro03', available: 'Yes', reserved: true },
+    { id: 4, name: 'Pro04', available: 'No', reserved: true },
+    { id: 1, name: 'Pro01', available: 'No', reserved: true },
+    { id: 2, name: 'Pro02', available: 'No', reserved: true },
 ];
 
 export const MockedPrinters3: Printer[] = [
-    { id: 5, name: 'Black', available: 'Yes', reserved: false },
-    { id: 3, name: 'Yellow', available: 'No', reserved: true },
-    { id: 4, name: 'Red', available: 'No', reserved: true },
-    { id: 1, name: 'Green', available: 'No', reserved: true },
-    { id: 2, name: 'Blue', available: 'No', reserved: true },
+    { id: 5, name: 'Pro05', available: 'Yes', reserved: false },
+    { id: 3, name: 'Pro03', available: 'No', reserved: true },
+    { id: 4, name: 'Pro04', available: 'No', reserved: true },
+    { id: 1, name: 'Pro01', available: 'No', reserved: true },
+    { id: 2, name: 'Pro02', available: 'No', reserved: true },
 ];
 
 export const MockedPrinters4: Printer[] = [
-    { id: 5, name: 'Black', available: 'Yes', reserved: false },
-    { id: 1, name: 'Green', available: 'Yes', reserved: false },
-    { id: 3, name: 'Yellow', available: 'No', reserved: true },
-    { id: 4, name: 'Red', available: 'No', reserved: true },
-    { id: 2, name: 'Blue', available: 'No', reserved: true },
+    { id: 5, name: 'Pro05', available: 'Yes', reserved: false },
+    { id: 1, name: 'Pro01', available: 'Yes', reserved: false },
+    { id: 3, name: 'Pro03', available: 'No', reserved: true },
+    { id: 4, name: 'Pro04', available: 'No', reserved: true },
+    { id: 2, name: 'Pro02', available: 'No', reserved: true },
 ];

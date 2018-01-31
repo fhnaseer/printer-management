@@ -36,21 +36,23 @@ export class PrinterService extends BaseService {
   }
 
   private getPrinterMetadata(printer: number, data: SensorData[]): Printer {
-    console.log(printer);
     var result = new Printer();
     result.id = printer;
     result.name = MockedPrinters[printer].name;
     result.reserved = true;
     result.available = 'No';
+    console.log(printer);
+    console.log(data);
     var today = new Date();
     for (var i = 0; i < data.length; i++) {
       var time = new Date(data[i].timestamp * 1000);
       var dif = today.getTime() - time.getTime();
-      if (dif / 1000 / 60 < 10) {
-        console.log('here');
-        result.available = 'Yes';
-        result.reserved = false;
-        break;
+      if (dif / 1000 / 60 < 1) {
+        if (data[i].values[0].value > 35) {
+          result.available = 'Yes';
+          result.reserved = false;
+          break;
+        }
       }
     }
     return result;
@@ -74,7 +76,7 @@ export class PrinterService extends BaseService {
       .get(this.getSensorIp(ip, printer))
       .toPromise()
       .then(res => {
-        return res.json().length;
+        return res.json().length / 60;
       })
       .catch(error => {
         return 0;

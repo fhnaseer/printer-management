@@ -19,7 +19,7 @@ export class LiveViewComponent implements OnInit {
   getNextStatus: boolean = true;
   currentId: number = 0;
 
-  demoMode: boolean = false;
+  demoMode: boolean = true;
 
   constructor(private printerService: PrinterService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
@@ -30,7 +30,7 @@ export class LiveViewComponent implements OnInit {
     if (!this.demoMode) {
       this.activatedRoute.params.subscribe((params: Params) => {
         this.ip = params["id"];
-        let timer = Observable.timer(0, 10000);
+        let timer = Observable.timer(0, 15000);
         timer.subscribe(t => {
           this.getPrinterInformation(this.currentId);
         });
@@ -70,8 +70,6 @@ export class LiveViewComponent implements OnInit {
       this.printerService
         .getPrinterStatus(this.ip, id)
         .then(response => {
-          console.log(response);
-          console.log(this.printers[id]);
           this.printers[id] = response;
           this.sortPrinters();
           this.currentId++;
@@ -84,20 +82,20 @@ export class LiveViewComponent implements OnInit {
   }
 
   populateGraphData() {
-    for (var i = 0; i < this.printers.length; i++)
+    for (var i = 0; i < 2; i++)
       this.getPrinterHistoryData(i);
   }
 
   getPrinterHistoryData(id: number) {
-    for (var i = 0; i < 2; i++)
+    for (var i = 0; i < 5; i++)
       this.labels[i] = this.printers[i].name;
-    if (!this.demoMode) {
-      this.printerService.getPrinterUsageCount(this.ip, id)
-        .then(response => {
-          this.labelCount[id] = response;
-        })
-        .catch(reason => console.log(reason));
-    }
+    // if (!this.demoMode) {
+    this.printerService.getPrinterUsageCount(this.ip, id)
+      .then(response => {
+        this.labelCount[id] = response;
+      })
+      .catch(reason => console.log(reason));
+    // }
   }
 
   reserve(id: number): void {
@@ -106,7 +104,7 @@ export class LiveViewComponent implements OnInit {
     this.sortPrinters();
 
     if (this.demoMode) {
-      let timer = Observable.timer(10000, 10000);
+      let timer = Observable.timer(5000, 7000);
       timer.subscribe(t => {
         this.populateMockedData();
       });
